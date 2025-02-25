@@ -18,9 +18,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {isModalOpen && (
-          <Modal setIsModalOpen={setIsModalOpen} setResponse={setResponse} />
-        )}
+        <Modal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          setResponse={setResponse}
+        />
         <p>{message}</p>
         <button
           onClick={() => {

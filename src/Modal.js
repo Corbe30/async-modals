@@ -1,8 +1,8 @@
 import { useRef } from "react";
 
-const Modal = ({ setIsModalOpen, setResponse }) => {
-  const usernameRef = useRef("");
+const Modal = ({ isModalOpen, setIsModalOpen, setResponse }) => {
   return (
+    isModalOpen &&
     <div
       style={{
         zIndex: 2,
