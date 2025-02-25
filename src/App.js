@@ -1,22 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Modal from "./Modal";
+import { useState } from "react";
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [response, setResponse] = useState(null);
+
+  let message = "agree to TnC?";
+  if (response == true) message = "Clicked yes.";
+  if (response == false) message = "Clicked no.";
+
+  const onClickHandle = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        {isModalOpen && (
+          <Modal setIsModalOpen={setIsModalOpen} setResponse={setResponse} />
+        )}
+        <p>{message}</p>
+        <button
+          onClick={() => {
+            onClickHandle();
+          }}
         >
-          Learn React
-        </a>
+          Open Modal
+        </button>
       </header>
     </div>
   );
