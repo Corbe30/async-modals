@@ -1,19 +1,19 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Modal from "./Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [response, setResponse] = useState(null);
 
-  let message = "agree to TnC?";
-  if (response == true) message = "Clicked yes.";
-  if (response == false) message = "Clicked no.";
-
-  const onClickHandle = () => {
+  const onClickHandler = () => {
     setIsModalOpen(true);
   };
+
+  useEffect(() => {
+    console.log(response);
+  }, [response]);
 
   return (
     <div className="App">
@@ -23,14 +23,7 @@ function App() {
           setIsModalOpen={setIsModalOpen}
           setResponse={setResponse}
         />
-        <p>{message}</p>
-        <button
-          onClick={() => {
-            onClickHandle();
-          }}
-        >
-          Open Modal
-        </button>
+        <button onClick={onClickHandler}>Open Modal</button>
       </header>
     </div>
   );
