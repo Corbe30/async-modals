@@ -1,28 +1,23 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Modal from "./Modal";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ModalContext } from "./ModalContext";
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [response, setResponse] = useState(null);
+  const modalCtx = useContext(ModalContext);
 
   const onClickHandler = () => {
-    setIsModalOpen(true);
+    modalCtx.setIsModalOpen(true);
   };
 
   useEffect(() => {
-    console.log(response);
-  }, [response]);
+    if (!modalCtx?.isModalOpen) console.log(modalCtx?.response);
+  }, [modalCtx?.isModalOpen]);
 
   return (
     <div className="App">
       <header className="App-header">
-        <Modal
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-          setResponse={setResponse}
-        />
         <button onClick={onClickHandler}>Open Modal</button>
       </header>
     </div>

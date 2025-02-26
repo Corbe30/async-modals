@@ -1,11 +1,9 @@
-const Modal = ({ isModalOpen, setIsModalOpen, setResponse }) => {
+const Modal = (props) => {
   const onClickHandler = (val) => {
-    setIsModalOpen(false);
-    setResponse(val);
+    props.onResponseClick(val);
   };
 
   return (
-    isModalOpen && (
       <div
         style={{
           zIndex: 2,
@@ -41,7 +39,6 @@ const Modal = ({ isModalOpen, setIsModalOpen, setResponse }) => {
           No
         </button>
       </div>
-    )
   );
 };
 export default Modal;
