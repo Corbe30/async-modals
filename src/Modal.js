@@ -1,12 +1,7 @@
-const Modal = ({ isModalOpen, setIsModalOpen, setResponse }) => {
-  const onClickHandler = (val) => {
-    setIsModalOpen(false);
-    setResponse(val);
-  };
+const Modal = ({ onResponseClick }) => {
 
   return (
-    isModalOpen && (
-      <div
+    <div
         style={{
           zIndex: 2,
           position: "absolute",
@@ -27,7 +22,7 @@ const Modal = ({ isModalOpen, setIsModalOpen, setResponse }) => {
         </p>
         <button
           onClick={() => {
-            onClickHandler(true);
+            onResponseClick(true);
           }}
         >
           Yes
@@ -35,13 +30,12 @@ const Modal = ({ isModalOpen, setIsModalOpen, setResponse }) => {
         &nbsp;
         <button
           onClick={() => {
-            onClickHandler(false);
+            onResponseClick(false);
           }}
         >
           No
         </button>
       </div>
-    )
   );
 };
 export default Modal;
