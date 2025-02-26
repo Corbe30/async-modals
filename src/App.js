@@ -1,19 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Modal from "./Modal";
-import { useContext, useEffect, useState } from "react";
-import { ModalContext } from "./ModalContext";
+import useModal from "./useModal";
 
 function App() {
-  const modalCtx = useContext(ModalContext);
-
-  const onClickHandler = () => {
-    modalCtx.setIsModalOpen(true);
+  const {confirm} = useModal();
+  const onClickHandler = async () => {
+    const response = await confirm();
+    console.log(response);
   };
-
-  useEffect(() => {
-    if (!modalCtx?.isModalOpen) console.log(modalCtx?.response);
-  }, [modalCtx?.isModalOpen]);
 
   return (
     <div className="App">
