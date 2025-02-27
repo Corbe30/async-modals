@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { ModalContext } from "./ModalContext";
 
-const useModal = () => {
+const useAsyncModal = () => {
     const modalCtx = useContext(ModalContext);
 
     const confirm = async () => {
         modalCtx.setIsModalOpen(true);
-        const a = await modalCtx.forUserToConfirm();
-        return a;
+        const response = await modalCtx.forUserToConfirm();
+        return response;
     }
     return {confirm};
 }

@@ -1,8 +1,9 @@
 import "./App.css";
-import useModal from "./useModal";
+import useAsyncModal from "./useAsyncModal";
 
 function App() {
   const {confirm} = useModal();
+
   const onClickHandler = async () => {
     const response = await confirm();
     console.log(response);
